@@ -1,12 +1,15 @@
 package com.cgh.sell.service;
 
-import com.cgh.sell.dao.ProductCategoryDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.cgh.sell.bean.ProductCategory;
 
-@Service
-public class ProductCategoryService {
+import java.util.List;
 
-    @Autowired
-    ProductCategoryDao productCategoryDao;
+public interface ProductCategoryService {
+    ProductCategory findOne(Integer categoryId);
+
+    List<ProductCategory> findAll();
+
+    List<ProductCategory> findByCategoryTypeIn(List<Integer> catrgoryTypeList);
+
+    ProductCategory save(ProductCategory productCategory);
 }
