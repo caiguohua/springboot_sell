@@ -1,7 +1,9 @@
 package com.cgh.sell.exception;
 
 import com.cgh.sell.enums.ResultEnum;
+import lombok.Data;
 
+@Data
 public class SellException extends RuntimeException{
 
     private Integer code;
@@ -11,5 +13,10 @@ public class SellException extends RuntimeException{
 
         this.code = resultEnum.getCode();
 
+    }
+
+    public SellException(Integer code,String message) {
+        super(message);
+        this.code = code;
     }
 }

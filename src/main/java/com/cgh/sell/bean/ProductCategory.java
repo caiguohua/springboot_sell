@@ -1,9 +1,11 @@
 package com.cgh.sell.bean;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * 类目
@@ -20,6 +22,7 @@ import javax.persistence.*;
  */
 @Entity
 @DynamicUpdate
+@DynamicInsert
 @Data
 @Table(name = "product_category")
 public class ProductCategory {
@@ -33,6 +36,11 @@ public class ProductCategory {
 
     @Column
     private Integer categoryType;
+
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public ProductCategory() {
     }

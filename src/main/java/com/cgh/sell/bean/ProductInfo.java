@@ -1,5 +1,8 @@
 package com.cgh.sell.bean;
 
+import com.cgh.sell.enums.ProductStatusEnum;
+import com.cgh.sell.utils.EnumUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -8,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Data
@@ -39,16 +43,14 @@ public class ProductInfo {
     @Column
     private Integer categoryType;
 
-    public ProductInfo() {
+    private Date createTime;
+
+    private Date updateTime;
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum(){
+        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
     }
 
-    public ProductInfo( String productName, BigDecimal productPrice, Integer productStock, String productDescription, String productIcon, Integer productStatus, Integer categoryType) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productStock = productStock;
-        this.productDescription = productDescription;
-        this.productIcon = productIcon;
-        this.productStatus = productStatus;
-        this.categoryType = categoryType;
-    }
+
 }
